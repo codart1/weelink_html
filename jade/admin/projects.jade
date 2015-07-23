@@ -58,7 +58,29 @@ block content
 
     hr
 
-    //- include ../includes/pagin.admin.jade
+    table.table.table-bordered.wl-white
+        thead
+          tr
+            th 프로젝트 명
+            th 클라이언트
+            th 연락처
+            th 예상금액
+            th 분야
+            th 지역
+            th 상태
+        tbody
+          -for(var i = 0; i < 10; i++) {
+            tr
+              td 워드프레스 홈페이지 제작 (22p)
+              td abcd
+              td 01012341234
+              td 6,000,000원
+              td 개발
+              td 서울
+              td 검수요청
+          -}
+
+    include ../includes/pagin.admin.jade
 
 block css
   link(rel='stylesheet', href='../../libs/brio-admin/assets/css/switch-buttons/switch-buttons.css')
