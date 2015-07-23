@@ -1,0 +1,26 @@
+extends ../layouts/admin.jade
+
+block content
+  .wl-new-wish-lish
+    h3: b 신규 요청 목록
+    hr
+
+    table.table.table-bordered.wl-white
+        thead
+          tr
+            th 상태
+            th 클라이언트
+            th 연락처
+            th 프로젝트 명
+            th 요청시간
+        tbody
+          -for(var i = 0; i < 10; i++) {
+            tr
+              td 신규 등록
+              td abcd
+              td 01012341234
+              td 워드프레스 홈페이지 제작 (22p)
+              td 15.06.20 20:17:05
+          -}
+
+    include ../includes/pagin.admin.jade

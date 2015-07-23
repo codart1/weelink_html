@@ -1,0 +1,68 @@
+extends ../layouts/admin.jade
+
+block content
+  .wl-projects
+    h3: b 프로젝트
+    hr
+
+    form.wl-projects-filter.container-fluid
+
+      .row.wl-projects-filter-row
+        .col-sm-2: span: b 분야          
+        .col-sm-10
+          .switch-button.showcase-switch-button
+            input#switch-button-1(name='switch-radio', type='radio')
+            label(for='switch-button-1')
+            span  전체목록
+
+          .switch-button.showcase-switch-button
+            input#switch-button-2(name='switch-radio', type='radio')
+            label(for='switch-button-2')
+            span  개발
+
+          .switch-button.showcase-switch-button
+            input#switch-button-3(name='switch-radio', type='radio')
+            label(for='switch-button-3')
+            span  디자인
+
+          .switch-button.showcase-switch-button
+            input#switch-button-4(name='switch-radio', type='radio')
+            label(for='switch-button-4')
+            span  기획
+
+          .switch-button.showcase-switch-button
+            input#switch-button-5(name='switch-radio', type='radio')
+            label(for='switch-button-5')
+            span  총괄
+
+      .row.wl-projects-filter-row
+        .col-sm-2: span: b 지역
+        .col-sm-10
+          select.form-control.chosen-select(data-placeholder='시, 도')
+            option
+            option(value='United States') United States
+            option(value='United Kingdom') United Kingdom
+            option(value='Afghanistan') Afghanistan
+            option(value='Albania') Albania
+            option(value='Algeria') Algeria
+
+
+      .row.wl-projects-filter-row
+        .col-sm-2: span: b 상태
+        .col-sm-10
+          ul.list-unstyled.list-inline.showcase-btn
+            - for(var i=0;i<6;i++) {
+              li
+                button.btn.btn-default.btn-circle(type='button') Default
+            - }
+
+    hr
+
+    //- include ../includes/pagin.admin.jade
+
+block css
+  link(rel='stylesheet', href='../../libs/brio-admin/assets/css/switch-buttons/switch-buttons.css')
+  link(rel='stylesheet', href='../../libs/brio-admin/assets/css/plugins/bootstrap-chosen/chosen.css')
+
+block js
+  script(src='../../libs/brio-admin/assets/js/plugins/bootstrap-chosen/chosen.jquery.js')

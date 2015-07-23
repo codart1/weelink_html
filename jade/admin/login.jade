@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Brio Web App - Bootstrap Admin Template + AngularJS
+    meta(name='description', content='')
+    meta(name='author', content='Akshay Kumar')
+    // Bootstrap core CSS
+    link(rel='stylesheet', href='../../libs/brio-admin/assets/css/bootstrap/bootstrap.css')
+    // Fonts
+    link(href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300', rel='stylesheet', type='text/css')
+    // Base Styling
+    link(rel='stylesheet', href='../../libs/brio-admin/assets/css/app/app.v1.css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+
+  body
+    .login.container
+      .row
+        .col-lg-4.col-lg-offset-4
+          h3.text-center WeeLink
+          hr.clean
+          form(role='form')
+            .form-group.input-group
+              span.input-group-addon
+                i.fa.fa-user
+              input.form-control(type='text', placeholder='Input your ID')
+            .form-group.input-group
+              span.input-group-addon
+                i.fa.fa-key
+              input.form-control(type='text', placeholder='패스워드')
+            .form-group
+              label.cr-styled
+                input(type='checkbox', ng-model='todo.done')
+                i.fa
+              | Remember me
+            button.btn.btn-purple.btn-block(type='submit') Sign in
+
+    // JQuery v1.9.1
+    script(src='../../libs/brio-admin/assets/js/jquery/jquery-1.9.1.min.js', type='text/javascript')
+    script(src='../../libs/brio-admin/assets/js/plugins/underscore/underscore-min.js')
+    // Bootstrap
+    script(src='../../libs/brio-admin/assets/js/bootstrap/bootstrap.min.js')
+    // Globalize
+    script(src='../../libs/brio-admin/assets/js/globalize/globalize.min.js')
+    // NanoScroll
+    script(src='../../libs/brio-admin/assets/js/plugins/nicescroll/jquery.nicescroll.min.js')
+    // Custom JQuery
+    script(src='../../libs/brio-admin/assets/js/app/custom.js', type='text/javascript')
