@@ -1,0 +1,76 @@
+extends ../layouts/admin.jade
+
+block content
+  .wl-new-wish-lish
+    h3: b 프로젝트 상세정보
+    hr
+
+    form.form-horizontal(role='form')
+
+      .form-group
+        label.col-sm-2 프로젝트 명
+        .col-sm-5
+          input.form-control(type='text', placeholder='워드프레스 홈페이지 제작')
+
+      .form-group
+        label.col-sm-2 클라이언트
+        .col-sm-5: span abcd
+
+      .form-group
+        label.col-sm-2 상태
+        .col-sm-5
+          select.form-control.chosen-select
+            option(value='United States') 검수요청
+            option(value='United Kingdom') 검수요청 취소
+            option(value='Afghanistan') 지원자 모집 중
+            option(value='Albania') 지원자 모집 취소
+            option(value='Algeria') 모집 마감
+            option(value='Algeria') 미팅 및 계약 진행 중
+            option(value='Algeria') 미팅 취소
+            option(value='Algeria') 진행 중
+            option(value='Algeria') 진행 중 취소
+            option(value='Algeria') 완료
+            option(value='Algeria') 기타
+      
+      .form-group
+        label.col-sm-2 기타 내용 입력
+        .col-sm-5
+          input.form-control(type='text', disabled='')
+
+      .form-group
+        label.col-sm-2 분야
+        .col-sm-2
+          select.form-control.chosen-select
+            option(value='United States') 검수요청
+            option(value='United Kingdom') 검수요청 취소
+            option(value='Afghanistan') 지원자 모집 중
+        .col-sm-2
+          select.form-control.chosen-select
+            option(value='United States') 검수요청
+            option(value='United Kingdom') 검수요청 취소
+            option(value='Afghanistan') 지원자 모집 중
+
+      .form-group
+        label.col-sm-2 예상금액
+        .col-sm-5
+          input.form-control(type='text')
+
+      hr
+          
+      .form-group
+        label.col-sm-2 예상기간
+        .col-sm-5
+          input.form-control(type='text', data-validation='number', data-validation-error-msg="Please entter number between 1-99", data-validation-allowing='range[1;99],negative')
+
+      .form-group: .col-sm-5
+        input(type='submit')
+
+block css
+  link(rel='stylesheet', href='../../libs/brio-admin/assets/css/switch-buttons/switch-buttons.css')
+  link(rel='stylesheet', href='../../libs/brio-admin/assets/css/plugins/bootstrap-chosen/chosen.css')
+
+block js
+  script(src='../../libs/brio-admin/assets/js/plugins/bootstrap-chosen/chosen.jquery.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js')
+  script.
+    $.validate();
