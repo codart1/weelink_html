@@ -1,0 +1,49 @@
+extends ../layouts/admin.jade
+
+block content
+  // start
+  // NEW APPLICANT LIST 
+  //
+  .wl-applicant-list(ng-app='applicantList')
+    h3: b 지원자 목록
+    hr
+
+    .container-fluid(ng-controller="ListController")
+      applicant-item(ng-repeat="(key, value) in data" info="value")
+
+    // Modal save
+    #modalSave.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#modalSaveLabel.modal-title: i.fa.fa-save  수정하시겠습니까?
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') 아니오
+            input.btn.btn-primary(type='submit' value="예")
+
+    // Modal delete
+    #modalDelete.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#modalDeleteLabel.modal-title: i.fa.fa-recycle  삭제하시겠습니까?
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') 아니오
+            input.btn.btn-primary(type='submit' value="예")
+
+  // 
+  // NEW APPLICANT LIST 
+  // end
+
+block css
+  link(rel='stylesheet', href='../../libs/brio-admin/assets/css/switch-buttons/switch-buttons.css')
+
+block js
+  script(src='../../libs/brio-admin/assets/js/angular/angular.min.js')
+  script(src='../../assets/js/applicant-list.admin.js')
+
+

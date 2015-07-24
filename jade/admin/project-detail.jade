@@ -1,42 +1,50 @@
 extends ../layouts/admin.jade
 
 block content
-  .wl-new-wish-lish
+  // start
+  // NEW WISH LIST 
+  //
+  .wl-new-wishlist
     h3: b 프로젝트 상세정보
     hr
 
     form.form-horizontal(role='form')
-
+      
+      // project’s name
       .form-group
         label.col-sm-2 프로젝트 명
         .col-sm-5
           input.form-control(type='text', placeholder='워드프레스 홈페이지 제작')
-
+      
+      // client’s ID
       .form-group
         label.col-sm-2 클라이언트
         .col-sm-5: span abcd
-
+      
+      // project progress status
       .form-group
         label.col-sm-2 상태
         .col-sm-5
           select.form-control.chosen-select
-            option(value='United States') 검수요청
-            option(value='United Kingdom') 검수요청 취소
-            option(value='Afghanistan') 지원자 모집 중
-            option(value='Albania') 지원자 모집 취소
-            option(value='Algeria') 모집 마감
-            option(value='Algeria') 미팅 및 계약 진행 중
-            option(value='Algeria') 미팅 취소
-            option(value='Algeria') 진행 중
-            option(value='Algeria') 진행 중 취소
-            option(value='Algeria') 완료
-            option(value='Algeria') 기타
+            option(value='status') 검수요청
+            option(value='status') 검수요청 취소
+            option(value='status') 지원자 모집 중
+            option(value='status') 지원자 모집 취소
+            option(value='status') 모집 마감
+            option(value='status') 미팅 및 계약 진행 중
+            option(value='status') 미팅 취소
+            option(value='status') 진행 중
+            option(value='status') 진행 중 취소
+            option(value='status') 완료
+            option(value='status') 기타
       
+      // project progress status for ETC
       .form-group
         label.col-sm-2 기타 내용 입력
         .col-sm-5
           input.form-control(type='text', disabled='')
 
+      // Client Section box 
       .form-group
         label.col-sm-2 분야
         .col-sm-2
@@ -50,27 +58,155 @@ block content
             option(value='United Kingdom') 검수요청 취소
             option(value='Afghanistan') 지원자 모집 중
 
+      // expected price
       .form-group
         label.col-sm-2 예상금액
+        .col-sm-4
+          input.form-control(type='text')
+        span.col-sm-1 원
+
+      hr
+      
+      // Expected period
+      .form-group
+        label.col-sm-2 예상기간
+        .col-sm-4
+          input.form-control(type='text', data-validation='number', data-validation-error-msg="Please entter number between 1-99", data-validation-allowing='range[1;99],negative')
+        span.col-sm-1 일
+
+      // recruiting deadline date
+      .form-group
+        label.col-sm-2 모집마감일
+        //- .col-sm-2
+        //-   select.form-control.chosen-select
+        //-     - for(var i=1999; i<2020; i++) {
+        //-       option(value='year')= i
+        //-     - }
+        //- .col-sm-1
+        //-   select.form-control.chosen-select
+        //-     - for(var i=1; i<13; i++) {
+        //-       option(value='month')= i
+        //-     - }
+        //- .col-sm-2
+        //-   select.form-control.chosen-select
+        //-     - for(var i=1; i<30; i++) {
+        //-       option(value='month')= i
+        //-     - }
+        .col-sm-5.date
+          input.form-control#recruitingDeadlineDate
+
+      // expected start date
+      .form-group
+        label.col-sm-2 예상시작일
+        .col-sm-5.date
+          input.form-control#expectedStartDate
+
+      // planing level
+      .form-group
+        label.col-sm-2 기획상태
+        .col-sm-5
+          select.form-control.chosen-select
+            option(value='planing_level') 아이디어 단계
+            option(value='planing_level') 필요사항 정리
+            option(value='planing_level') 상세 기획문서 보유
+
+      hr
+
+      // Region 
+      .form-group
+        label.col-sm-2 지역
+        .col-sm-2
+          select.form-control.chosen-select
+            - for(var i=1;i<10;i++) {
+              option(value='City ' + i) City #{i}
+            - }
+        .col-sm-2
+          select.form-control.chosen-select
+            - for(var i=1;i<10;i++) {
+              option(value='District ' + i) District #{i}
+            - }
+
+      // Related technology
+      .form-group
+        label.col-sm-2 관련기술
+        .col-sm-5
+          input.form-control(type='text', value="java, oracle, html5, android, ios")
+      
+      // registered date
+      .form-group
+        label.col-sm-2 등록일자
+        .col-sm-5: span 2015.06.25
+
+      // Partner ID
+      .form-group
+        label.col-sm-2 파트너스
         .col-sm-5
           input.form-control(type='text')
 
       hr
-          
-      .form-group
-        label.col-sm-2 예상기간
-        .col-sm-5
-          input.form-control(type='text', data-validation='number', data-validation-error-msg="Please entter number between 1-99", data-validation-allowing='range[1;99],negative')
 
-      .form-group: .col-sm-5
-        input(type='submit')
+      // Project content
+      .form-group
+        label.col-sm-2 프로젝트 내용
+        .col-sm-5
+          textarea.form-control(rows='3')
+
+      hr
+
+      // buttons
+      .form-group: .col-sm-7.text-right
+        ul.list-unstyled.list-inline.showcase-btn
+          li
+            // If clicked, move to [project_applicant] page
+            a.btn.btn-default(href="#") 지원자 목록 
+          li
+            // If clicked, move to [project_list] page
+            a.btn.btn-default(href="#") 프로젝트 목록 
+          li
+            button.btn.btn-danger(type='button' data-toggle="modal" data-target="#modalDelete") 프로젝트 삭제
+          li
+            button.btn.btn-primary(type='button' data-toggle="modal" data-target="#modalSave") 프로젝트 수정
+
+      // Modal save
+      #modalSave.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#modalSaveLabel.modal-title: i.fa.fa-save  수정하시겠습니까?
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') 아니오
+              input.btn.btn-primary(type='submit' value="예")
+
+      // Modal delete
+      #modalDelete.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#modalDeleteLabel.modal-title: i.fa.fa-recycle  삭제하시겠습니까?
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') 아니오
+              input.btn.btn-primary(type='submit' value="예")
+      
+  // 
+  // NEW WISH LIST 
+  // end
 
 block css
   link(rel='stylesheet', href='../../libs/brio-admin/assets/css/switch-buttons/switch-buttons.css')
   link(rel='stylesheet', href='../../libs/brio-admin/assets/css/plugins/bootstrap-chosen/chosen.css')
+  link(rel='stylesheet', href='../../libs/brio-admin/assets/css/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css')
 
 block js
   script(src='../../libs/brio-admin/assets/js/plugins/bootstrap-chosen/chosen.jquery.js')
+  script(src='../../libs/brio-admin/assets/js/moment/moment.js')
+  script(src='../../libs/brio-admin/assets/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js')
   script(src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js')
+  
   script.
     $.validate();
+
+    $('#recruitingDeadlineDate, #expectedStartDate').datetimepicker({format: "YYYY/MM/DD"});
